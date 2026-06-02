@@ -181,27 +181,37 @@ section.block{padding:88px 0;}
 .member-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
 .member-card{
   background:var(--surface);border:1px solid var(--border);border-radius:14px;
-  padding:36px 26px 28px;text-align:center;
-  display:flex;flex-direction:column;align-items:center;
+  overflow:hidden;text-align:center;
   transition:transform .2s,box-shadow .2s,border-color .2s;
 }
 .member-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(58,58,56,0.07);border-color:#EAD49A;}
-.member-card .top-mark{width:30px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:20px;}
 .member-card .photo{
-  width:118px;height:118px;border-radius:50%;object-fit:cover;
-  margin-bottom:20px;background:#ececec;border:3px solid #fff;
-  box-shadow:0 4px 14px rgba(58,58,56,0.10);
+  width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;
+  display:block;background:#ececec;
 }
-.member-card h3{font-family:var(--title-m);font-size:22px;letter-spacing:0.02em;margin-bottom:16px;}
+.member-info{padding:22px 22px 26px;display:flex;flex-direction:column;align-items:center;}
+.member-card h3{font-family:var(--title-m);font-size:21px;letter-spacing:0.02em;margin-bottom:13px;}
 .member-card .slogan{
-  font-size:15px;color:#5e564a;line-height:1.65;flex:1;
-  display:flex;align-items:center;justify-content:center;min-height:50px;
+  font-size:14.5px;color:#5e564a;line-height:1.6;flex:1;
+  display:flex;align-items:center;justify-content:center;min-height:46px;
 }
 .member-card .mail{
-  margin-top:20px;padding-top:16px;width:100%;border-top:1px solid var(--line-soft);
+  margin-top:18px;padding-top:16px;width:100%;border-top:1px solid var(--line-soft);
   font-family:var(--title-m);font-size:13px;color:var(--muted);transition:color .18s;
 }
 .member-card .mail:hover{color:var(--primary);}
+
+/* ===== partner network (layer 4) ===== */
+.partners-sec{background:var(--surface);}
+.partners-body{max-width:760px;}
+.partners-body p{font-size:16px;color:var(--muted);line-height:1.95;margin-bottom:16px;}
+.partner-stats{display:flex;align-items:center;gap:34px;margin:36px 0 10px;flex-wrap:wrap;}
+.partner-stats .stat{display:flex;flex-direction:column;}
+.partner-stats .num{font-family:var(--title);font-size:clamp(34px,5vw,46px);color:var(--primary);line-height:1;}
+.partner-stats .num::after{content:'명';font-family:var(--title-m);font-size:16px;color:var(--muted);margin-left:3px;}
+.partner-stats .lab{font-family:var(--title-m);font-size:14px;color:var(--muted);margin-top:9px;}
+.partner-stats .stat-div{width:1px;height:48px;background:var(--border);}
+.stat-asof{font-size:13px;color:var(--muted);margin-top:8px;}
 
 /* ===== cta / footer ===== */
 .cta{background:var(--primary);color:#fff;padding:74px 0;}
@@ -302,7 +312,6 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
   .case-item{flex-wrap:wrap;gap:6px 12px;}
   .case-item .cl{flex-basis:100%;}
   .member-grid{grid-template-columns:1fr;}
-  .member-card .photo{width:104px;height:104px;}
   br.pc{display:none;}          /* 좁은 화면: 데스크탑용 중간 줄바꿈 제거 → 자동 줄바꿈 */
 }
 </style>
@@ -441,34 +450,65 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
       <div class="top-dot"></div>
       <h2><span class="en">WHO WE ARE — 멤버 소개</span>라인을 만드는 사람들</h2>
       <div class="underline"></div>
-      <p class="desc">각자의 색으로 사람과 배움을 잇습니다.<br>라인의 네 사람이 현장에서 대화를 설계하고<br class="pc">변화의 과정을 함께 만듭니다.</p>
+      <p class="desc">각자의 색으로 사람과 배움을 잇고,<br>변화의 과정을 함께 만듭니다.</p>
     </div>
 
     <div class="member-grid">
       <div class="member-card reveal">
         <img class="photo" src="assets/member-ra.jpg" alt="라서현" loading="lazy">
-        <h3>라서현</h3>
-        <p class="slogan">가치와 동기를 찾아 성장을 돕는다</p>
-        <a href="mailto:ceo@laain.kr" class="mail">ceo@laain.kr</a>
+        <div class="member-info">
+          <h3>라서현</h3>
+          <p class="slogan">진심이 동기가 되고,<br>동기가 성장이 되도록</p>
+          <a href="mailto:ceo@laain.kr" class="mail">ceo@laain.kr</a>
+        </div>
       </div>
       <div class="member-card reveal">
         <img class="photo" src="assets/member-park.jpg" alt="박은하" loading="lazy">
-        <h3>박은하</h3>
-        <p class="slogan">공감을 그려내다</p>
-        <a href="mailto:art@laain.kr" class="mail">art@laain.kr</a>
+        <div class="member-info">
+          <h3>박은하</h3>
+          <p class="slogan">공감을 그려내다</p>
+          <a href="mailto:art@laain.kr" class="mail">art@laain.kr</a>
+        </div>
       </div>
       <div class="member-card reveal">
         <img class="photo" src="assets/member-kim.jpg" alt="김연미" loading="lazy">
-        <h3>김연미</h3>
-        <p class="slogan">배움을 재미있게</p>
-        <a href="mailto:mic@laain.kr" class="mail">mic@laain.kr</a>
+        <div class="member-info">
+          <h3>김연미</h3>
+          <p class="slogan">배움을 재미있게</p>
+          <a href="mailto:mic@laain.kr" class="mail">mic@laain.kr</a>
+        </div>
       </div>
       <div class="member-card reveal">
         <img class="photo" src="assets/member-lee.jpg" alt="이진영" loading="lazy">
-        <h3>이진영</h3>
-        <p class="slogan">Be professional!</p>
-        <a href="mailto:jin@laain.kr" class="mail">jin@laain.kr</a>
+        <div class="member-info">
+          <h3>이진영</h3>
+          <p class="slogan">Be professional!</p>
+          <a href="mailto:jin@laain.kr" class="mail">jin@laain.kr</a>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 4 : PARTNER NETWORK -->
+<section class="block partners-sec" id="partners">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="top-dot"></div>
+      <h2><span class="en">LAAIN MATE — 파트너 네트워크</span>전국의 라인메이트와 함께합니다</h2>
+      <div class="underline"></div>
+    </div>
+
+    <div class="partners-body reveal">
+      <p>라인교육연구소는 핵심 멤버를 중심으로<br class="pc">프로젝트의 주제와 지역, 참여대상에 맞는 협력팀을 구성합니다.</p>
+      <p>전국의 전문가, 퍼실리테이터, 현장활동가와 함께하며<br>라인이 양성한 지역계획 퍼실리테이터 네트워크를 통해<br class="pc">현장의 대화와 실행을 연결합니다.</p>
+
+      <div class="partner-stats">
+        <div class="stat"><span class="num">575</span><span class="lab">누적 교육생</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="num">309</span><span class="lab">자격 취득자</span></div>
+      </div>
+      <p class="stat-asof">2026년 5월 기준</p>
     </div>
   </div>
 </section>
