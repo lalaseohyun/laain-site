@@ -181,7 +181,7 @@ section.block{padding:88px 0;}
 .member-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
 .member-card{
   background:var(--surface);border:1px solid var(--border);border-radius:14px;
-  overflow:hidden;text-align:center;
+  overflow:hidden;text-align:center;display:flex;flex-direction:column;
   transition:transform .2s,box-shadow .2s,border-color .2s;
 }
 .member-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(58,58,56,0.07);border-color:#EAD49A;}
@@ -189,11 +189,16 @@ section.block{padding:88px 0;}
   width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;
   display:block;background:#ececec;
 }
-.member-info{padding:22px 22px 26px;display:flex;flex-direction:column;align-items:center;}
-.member-card h3{font-family:var(--title-m);font-size:21px;letter-spacing:0.02em;margin-bottom:13px;}
+.member-info{padding:22px 22px 24px;display:flex;flex-direction:column;align-items:center;flex:1;}
+.member-card h3{font-family:var(--title-m);font-size:21px;letter-spacing:0.02em;margin-bottom:12px;}
 .member-card .slogan{
-  font-size:14.5px;color:#5e564a;line-height:1.6;flex:1;
-  display:flex;align-items:center;justify-content:center;min-height:46px;
+  font-size:14.5px;color:#5e564a;line-height:1.6;min-height:44px;
+  display:flex;align-items:center;justify-content:center;
+}
+.member-card .tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:14px;}
+.member-card .tags span{
+  font-family:var(--title-m);font-size:11.5px;color:#8a7320;
+  background:var(--soft);border-radius:20px;padding:3px 9px;line-height:1.5;
 }
 .member-card .mail{
   margin-top:18px;padding-top:16px;width:100%;border-top:1px solid var(--line-soft);
@@ -459,6 +464,7 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
         <div class="member-info">
           <h3>라서현</h3>
           <p class="slogan">진심이 동기가 되고,<br>동기가 성장이 되도록</p>
+          <div class="tags"><span>#참여설계</span><span>#의사결정</span><span>#양성과정</span><span>#공론장진행</span></div>
           <a href="mailto:ceo@laain.kr" class="mail">ceo@laain.kr</a>
         </div>
       </div>
@@ -467,6 +473,7 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
         <div class="member-info">
           <h3>박은하</h3>
           <p class="slogan">공감을 그려내다</p>
+          <div class="tags"><span>#공동체교육</span><span>#공감소통</span><span>#동기부여</span><span>#시각화</span></div>
           <a href="mailto:art@laain.kr" class="mail">art@laain.kr</a>
         </div>
       </div>
@@ -475,6 +482,7 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
         <div class="member-info">
           <h3>김연미</h3>
           <p class="slogan">배움을 재미있게</p>
+          <div class="tags"><span>#레크리에이션</span><span>#스피치</span><span>#관계열기</span><span>#자신감향상</span></div>
           <a href="mailto:mic@laain.kr" class="mail">mic@laain.kr</a>
         </div>
       </div>
@@ -483,6 +491,7 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
         <div class="member-info">
           <h3>이진영</h3>
           <p class="slogan">Be professional!</p>
+          <div class="tags"><span>#마을교육</span><span>#중국어소통</span><span>#양성과정</span><span>#참여교육</span></div>
           <a href="mailto:jin@laain.kr" class="mail">jin@laain.kr</a>
         </div>
       </div>
