@@ -524,7 +524,7 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>현장의 변화가 필요하신가요?<br><span class="hl">대화를 연결하는 일</span>, 라인이 함께합니다</h2>
+    <h2>함께 만드는 변화가 필요하신가요?<br><span class="hl">의미있고 재미있는 배움</span>이 일어나도록<br>라인이 함께하겠습니다.</h2>
     <button class="cta-btn" id="openInquiry" type="button">협업·견적 문의 →</button>
   </div>
 </section>
@@ -542,7 +542,7 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
 <div class="modal-overlay" id="inquiryModal" aria-hidden="true">
   <div class="modal" role="dialog" aria-modal="true" aria-label="협업·견적 문의">
     <button class="modal-close" id="closeInquiry" type="button" aria-label="닫기">×</button>
-    <form class="inquiry-form" id="inquiryForm" enctype="multipart/form-data">
+    <form class="inquiry-form" id="inquiryForm">
       <!-- Web3Forms: 아래 access_key 값을 발급받은 키로 교체하세요 -->
       <input type="hidden" name="access_key" value="8159fdcf-dd70-4cdc-9259-5c66b2293887">
       <input type="hidden" name="subject" value="[라인 홈페이지] 협업·견적 문의">
@@ -599,11 +599,6 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
           <input type="tel" name="연락처" placeholder="010-0000-0000">
           <input type="email" name="이메일" placeholder="name@example.com" required>
         </div>
-      </div>
-
-      <div class="q">
-        <label class="q-label">프로젝트를 파악할 수 있는 자료가 있다면 첨부해주세요.</label>
-        <input type="file" name="첨부파일" class="file-input">
       </div>
 
       <div class="q">
@@ -702,7 +697,25 @@ document.querySelectorAll('.method[data-cat]').forEach(function(m){
         return;
       }
       btn.disabled=true; status.textContent='보내는 중...';
-      fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      /* JSON(UTF-8)으로 전송 — 한글 항목명이 메일에서 깨지지 않도록 */
+      var val=function(sel){var el=form.querySelector(sel);return el?el.value.trim():'';};
+      var types=[].slice.call(form.querySelectorAll('[name="프로젝트 유형"]:checked')).map(function(c){return c.value;});
+      var payload={
+        access_key:key,
+        subject:'[라인 홈페이지] 협업·견적 문의',
+        from_name:'라인교육연구소 홈페이지',
+        "프로젝트 유형":types.join(', '),
+        "지급 유형":val('[name="지급 유형"]:checked'),
+        "예산":val('[name="예산"]'),
+        "일정":val('[name="일정"]'),
+        "프로젝트명":val('[name="프로젝트명"]'),
+        "회사·기관명":val('[name="회사·기관명"]'),
+        "담당자":val('[name="담당자"]'),
+        "연락처":val('[name="연락처"]'),
+        "이메일":val('[name="이메일"]'),
+        "추가 메시지":val('[name="추가 메시지"]')
+      };
+      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
         .then(function(r){return r.json();})
         .then(function(d){
           if(d.success){ form.reset(); syncChoices(); status.innerHTML='<span class="form-ok">문의가 접수되었습니다. 확인 후 연락드릴게요.</span>'; }
