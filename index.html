@@ -80,6 +80,15 @@ header{
 .hero h1 .hl{color:var(--accent);}
 .hero p.lead{font-size:clamp(16px,2vw,19px);color:rgba(255,255,255,0.72);max-width:620px;line-height:1.85;}
 .hero p.lead strong{color:#fff;font-weight:500;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px;}
+.hero-btn{
+  font-family:var(--title-m);font-size:15px;background:var(--accent);color:var(--primary);
+  padding:14px 26px;border-radius:10px;display:inline-flex;align-items:center;gap:8px;
+  transition:transform .15s;
+}
+.hero-btn:hover{transform:translateY(-2px);}
+.hero-btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.45);}
+.hero-btn.ghost:hover{background:rgba(255,255,255,0.08);}
 
 /* stats */
 /* hero lead spacing */
@@ -346,6 +355,10 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
     <div class="eyebrow"><span class="dot"></span>LOCAL EDUCATION &amp; CONSULTING · since 2018</div>
     <h1>사람의 참여를 설계하고<br><span class="hl">변화의 과정</span>을 만듭니다</h1>
     <p class="lead">라인교육연구소는 <strong>사람과 사람 사이의 대화를 연결하고</strong>,<br>그 과정 속에서 <strong>의미있고 재미있는 배움</strong>이 일어나도록 설계합니다.</p>
+    <div class="hero-actions">
+      <a class="hero-btn" href="assets/laain-brochure.pdf" download="라인교육연구소_회사소개서.pdf">📄 회사소개서 다운로드 (PDF)</a>
+      <a class="hero-btn ghost" href="#contact">협업·견적 문의 →</a>
+    </div>
   </div>
 </section>
 
