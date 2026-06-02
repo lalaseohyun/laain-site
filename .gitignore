@@ -15,4 +15,5 @@ build-brochure.js
 # 멤버 원본 사진 (가공 전 대용량 원본 — 사이트엔 member-*.jpg만 사용)
 assets/lala.jpg
 assets/members-*
+assets/member-la.jpg
 assets/_src-*
