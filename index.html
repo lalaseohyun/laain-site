@@ -173,6 +173,27 @@ section.block{padding:88px 0;}
 .callout p{font-size:14.5px;color:#5e564a;line-height:1.8;}
 .callout p b{color:var(--primary);font-weight:500;}
 
+/* ===== members (layer 3) ===== */
+.member-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.member-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:36px 26px 28px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.member-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(58,58,56,0.07);border-color:#EAD49A;}
+.member-card .top-mark{width:30px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:20px;}
+.member-card h3{font-family:var(--title-m);font-size:22px;letter-spacing:0.02em;margin-bottom:16px;}
+.member-card .slogan{
+  font-size:15px;color:#5e564a;line-height:1.65;flex:1;
+  display:flex;align-items:center;justify-content:center;min-height:50px;
+}
+.member-card .mail{
+  margin-top:20px;padding-top:16px;width:100%;border-top:1px solid var(--line-soft);
+  font-family:var(--title-m);font-size:13px;color:var(--muted);transition:color .18s;
+}
+.member-card .mail:hover{color:var(--primary);}
+
 /* ===== cta / footer ===== */
 .cta{background:var(--primary);color:#fff;padding:74px 0;}
 .cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;}
@@ -200,6 +221,7 @@ footer .finfo span{margin:0 10px;color:rgba(255,255,255,0.25);}
   .focus-grid{grid-template-columns:1fr;}
   .focus-card.lead-area{grid-row:auto;}
   .method-list{grid-template-columns:1fr;}
+  .member-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:520px){
   .wrap{padding:0 20px;}
@@ -207,6 +229,7 @@ footer .finfo span{margin:0 10px;color:rgba(255,255,255,0.25);}
   section.block{padding:60px 0;}
   .case-item{flex-wrap:wrap;gap:6px 12px;}
   .case-item .cl{flex-basis:100%;}
+  .member-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -332,6 +355,45 @@ footer .finfo span{margin:0 10px;color:rgba(255,255,255,0.25);}
         <p class="summary">아동·청소년·대학생·청년이 배우고 탐색하며, 자신의 경험을 정책·진로·프로젝트 제안으로 연결하는 과정을 운영합니다.</p>
         <button class="case-btn" type="button">주요 수행사례 보기 <span class="chev">▾</span></button>
         <div class="case-panel"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 3 : MEMBERS -->
+<section class="block members-sec" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="top-dot"></div>
+      <h2><span class="en">WHO WE ARE — 멤버 소개</span>라인을 만드는 사람들</h2>
+      <div class="underline"></div>
+      <p class="desc">각자의 색으로 사람과 배움을 잇습니다. 라인의 네 사람이 현장에서 대화를 설계하고 변화의 과정을 함께 만듭니다.</p>
+    </div>
+
+    <div class="member-grid">
+      <div class="member-card reveal">
+        <span class="top-mark"></span>
+        <h3>라서현</h3>
+        <p class="slogan">가치와 동기를 찾아 성장을 돕는다</p>
+        <a href="mailto:ceo@laain.kr" class="mail">ceo@laain.kr</a>
+      </div>
+      <div class="member-card reveal">
+        <span class="top-mark"></span>
+        <h3>박은하</h3>
+        <p class="slogan">공감을 그려내다</p>
+        <a href="mailto:art@laain.kr" class="mail">art@laain.kr</a>
+      </div>
+      <div class="member-card reveal">
+        <span class="top-mark"></span>
+        <h3>김연미</h3>
+        <p class="slogan">배움을 재미있게</p>
+        <a href="mailto:mic@laain.kr" class="mail">mic@laain.kr</a>
+      </div>
+      <div class="member-card reveal">
+        <span class="top-mark"></span>
+        <h3>이진영</h3>
+        <p class="slogan">Be professional!</p>
+        <a href="mailto:jin@laain.kr" class="mail">jin@laain.kr</a>
       </div>
     </div>
   </div>
