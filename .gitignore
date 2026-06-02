@@ -3,3 +3,10 @@ admin.html
 
 # 로컬 개발 설정 (미리보기 서버 등)
 .claude/
+
+# 문의 폼 참고 원본 (실제 사이트는 index.html에 통합됨)
+inquiry-form.html
+
+# 멤버 원본 사진 (가공 전 대용량 원본 — 사이트엔 member-*.jpg만 사용)
+assets/lala.jpg
+assets/members-*
