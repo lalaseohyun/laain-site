@@ -7,6 +7,9 @@ admin.html
 # 문의 폼 참고 원본 (실제 사이트는 index.html에 통합됨)
 inquiry-form.html
 
+# 회사소개서 PDF 생성용 소스 (PDF만 배포)
+brochure.html
+
 # 멤버 원본 사진 (가공 전 대용량 원본 — 사이트엔 member-*.jpg만 사용)
 assets/lala.jpg
 assets/members-*
