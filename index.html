@@ -274,11 +274,11 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
 .chk-group{display:flex;flex-wrap:wrap;gap:9px;}
 .chk{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border:1px solid var(--border);border-radius:9px;cursor:pointer;font-size:14px;color:var(--primary);transition:background .18s,border-color .18s;}
 .chk:hover{border-color:#EAD49A;}
-.chk:has(input:checked){background:var(--soft);border-color:#EAD49A;}
+.chk:has(input:checked),.chk.sel{background:var(--soft);border-color:#EAD49A;}
 .chk input{accent-color:#C5921A;width:16px;height:16px;}
 .toggle-group{display:flex;gap:9px;margin-bottom:12px;}
 .tg{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border:1px solid var(--border);border-radius:9px;cursor:pointer;font-size:14px;color:var(--primary);transition:background .18s,border-color .18s,color .18s;}
-.tg:has(input:checked){background:var(--primary);border-color:var(--primary);color:var(--soft);}
+.tg:has(input:checked),.tg.sel{background:var(--primary);border-color:var(--primary);color:var(--soft);}
 .tg input{display:none;}
 .file-input{font-size:13px;color:var(--muted);}
 .submit-btn{
@@ -679,6 +679,18 @@ document.querySelectorAll('.method[data-cat]').forEach(function(m){
   modal.addEventListener('click',function(e){if(e.target===modal) closeModal();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open')) closeModal();});
 
+  /* 선택 상태를 클래스로 직접 표시 (브라우저 :has 지원과 무관하게 동작) */
+  function syncChoices(){
+    document.querySelectorAll('#inquiryForm .tg, #inquiryForm .chk').forEach(function(el){
+      var i=el.querySelector('input');
+      if(i) el.classList.toggle('sel', i.checked);
+    });
+  }
+  document.querySelectorAll('#inquiryForm .tg input, #inquiryForm .chk input').forEach(function(i){
+    i.addEventListener('change', syncChoices);
+  });
+  syncChoices();
+
   if(form){
     form.addEventListener('submit',function(e){
       e.preventDefault();
@@ -693,7 +705,7 @@ document.querySelectorAll('.method[data-cat]').forEach(function(m){
       fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
         .then(function(r){return r.json();})
         .then(function(d){
-          if(d.success){ form.reset(); status.innerHTML='<span class="form-ok">문의가 접수되었습니다. 확인 후 연락드릴게요.</span>'; }
+          if(d.success){ form.reset(); syncChoices(); status.innerHTML='<span class="form-ok">문의가 접수되었습니다. 확인 후 연락드릴게요.</span>'; }
           else{ status.textContent='전송에 실패했어요. 잠시 후 다시 시도하거나 ceo@laain.kr로 보내주세요.'; btn.disabled=false; }
         })
         .catch(function(){ status.textContent='전송 중 오류가 났어요. ceo@laain.kr로 보내주세요.'; btn.disabled=false; });
