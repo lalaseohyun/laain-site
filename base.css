@@ -1,0 +1,32 @@
+/* =============================================================
+   라인 사이트 공통 베이스 (디자인 토큰 · 리셋 · 공통 레이아웃)
+   -------------------------------------------------------------
+   ▶ 모든 섹션 파일이 이 파일 하나를 공유합니다.
+   ▶ 색/폰트를 바꾸려면 아래 :root 값만 고치면 전체에 반영됩니다.
+   ▶ 폰트 <link>(Pretendard·SBAggro)는 각 HTML의 <head>에 그대로 둡니다.
+   ============================================================= */
+:root{
+  --primary:#3A3A38;
+  --bg:#F4F3EE;
+  --surface:#FFFFFF;
+  --accent:#FDCE0F;
+  --soft:#FDF2DC;
+  --muted:#6B6B66;
+  --border:#CFCCC4;
+  --line:#CFCCC4;
+  --land:#E6E4DD;        /* 지도 육지 색 */
+  --line-soft:#E4E1D8;
+  --title:'SBAggroB','Pretendard',sans-serif;
+  --title-m:'SBAggroM','Pretendard',sans-serif;
+  --body:'KoPubWorld Dotum','Pretendard',-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:var(--body);
+  background:var(--bg);
+  color:var(--primary);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+a{color:inherit;text-decoration:none;}
