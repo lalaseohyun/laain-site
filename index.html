@@ -381,7 +381,7 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
       <li><a href="#methods">사업영역</a></li>
       <li><a href="#people">수행사례</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">협업 문의</a>
+    <a href="#contact" class="nav-cta" id="openInquiryNav">협업 문의</a>
     <button class="nav-toggle" aria-label="메뉴">☰</button>
   </div>
 </header>
@@ -390,7 +390,7 @@ button.cta-btn{border:none;cursor:pointer;font-family:var(--title-m);}
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow"><span class="dot"></span>LOCAL EDUCATION &amp; CONSULTING · since 2018</div>
-    <h1>사람의 참여를 설계하고<br><span class="hl">변화의 과정</span>을 만듭니다</h1>
+    <h1>참여를 설계하고<br><span class="hl">변화의 과정</span>을 만듭니다</h1>
     <p class="lead">라인교육연구소는 <strong>사람과 사람 사이의 대화를 연결하고</strong>,<br>그 과정 속에서 <strong>의미있고 재미있는 배움</strong>이 일어나도록 설계합니다.</p>
   </div>
 </section>
@@ -842,6 +842,8 @@ function initMap(){
   function openModal(){modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
   function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
   if(openBtn) openBtn.addEventListener('click',openModal);
+  var navBtn=document.getElementById('openInquiryNav');
+  if(navBtn) navBtn.addEventListener('click',function(e){e.preventDefault();openModal();});
   if(closeBtn) closeBtn.addEventListener('click',closeModal);
   modal.addEventListener('click',function(e){if(e.target===modal) closeModal();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open')) closeModal();});
